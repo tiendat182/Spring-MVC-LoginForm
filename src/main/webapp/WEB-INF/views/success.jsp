@@ -1,44 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login success</title>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.4.min.js" />" ></script>
-<script type="text/javascript" src="<c:url value="/resources/js/userList.js" />" ></script>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.min.js" />" ></script>
-<link rel="stylesheet" href="<c:url value="/resources/css/jquery.dataTables.min.css" />" type="text/css" /> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
-<form:form modelAttribute="loginBean" >
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="#">XMS Project</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Home</a></li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">User <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">Home</a></li>
+	            <li><a href="${pageContext.request.contextPath}/registUser/getUserList">User Info</a></li>
+	            <li><a href="#">Contact</a></li>
+	          </ul>
+	        </li>
+	        <li><a href="#">Map</a></li>
+	        <li><a href="#">About</a></li>
+	      </ul>
+	      
+      	  <form class="navbar-form navbar-left">
+		      <div class="input-group">
+		        <input type="text" class="form-control" placeholder="Search">
+		        <div class="input-group-btn">
+		          <button class="btn btn-default" type="submit">
+		            <i class="glyphicon glyphicon-search"></i>
+		          </button>
+		        </div>
+		      </div>
+	    </form>
+			  
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	
 	<h2>${msg}</h2>
-	<table width="100%" style="border: solid 1px black; border-collapse: collapse;" id="myTable">
-		<thead>
-				<tr style="background-color: teal; color:white;">
-					<th>No.</th>
-					<th>Email</th>
-					<th>Password</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-				</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${userList}" var="user" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td>${user.email_id}</td>
-					<td>${user.password}</td>
-					<td>${user.first_name}</td>
-					<td>${user.last_name}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>	
-	<br/>
-</form:form>
+	<p>In this example, we create a "user" with the information of that user. Please to click to "User Info" tab to create.</p>
+
 </body>
 </html>
