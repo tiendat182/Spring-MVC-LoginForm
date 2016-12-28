@@ -10,7 +10,6 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.4.min.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/js/userList.js" />" ></script>
 <link rel="stylesheet" href="<c:url value="/resources/css/jquery.dataTables.min.css" />" type="text/css" /> 
-<link rel="stylesheet" href="<c:url value="/resources/css/registerUser.css" />" type="text/css" /> 
 <script type="text/javascript" src="<c:url value="/resources/js/registerUser.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.min.js" />" ></script>
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css"> -->
@@ -18,6 +17,7 @@
 <%-- <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" type="text/css" /> --%>
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.min.css" />" type="text/css" />
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<c:url value="/resources/css/registerUser.css" />" type="text/css" /> 
 <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
 
 </head>
@@ -114,7 +114,8 @@
 								      		<div class="input-group-addon">Password</div>
 								      		<input type="password" class="form-control" id="password" placeholder="Password" name="password">
 								    	</div>
-								    	<span class="help-block has-error" id="password-error"></span>
+<!-- 								    	<span class="help-block has-error" id="password-error"></span> -->
+								    	<div id="password-error"></div>
 								  	</div>
 								  	
 								  	<div class="form-group">
@@ -141,15 +142,13 @@
 								    	<span class="help-block has-error" id="firstName-error"></span>
 								  	</div>									  	
 								  	
-						  			<button type="submit" id="regist_btn" class="btn btn-block btn-primary" data-loading-text="Signing In....">Register</button>
+						  			<button type=button id="regist_btn" class="btn btn-block btn-primary" data-loading-text="Signing In...." onclick="btn_regist();">Register</button>
 						  			<div class="clearfix"></div>
 						  			<div class="login-modal-footer">
 						  				<div class="row">
 											<div class="col-xs-8 col-sm-8 col-md-8">
-												<i class="fa fa-lock"></i>
 											</div>
 											<div class="col-xs-4 col-sm-4 col-md-4">
-												<i class="fa fa-check"></i>
 											</div>
 										</div>
 						  			</div>
@@ -161,7 +160,7 @@
 					    	    &nbsp;&nbsp;
 					    	    <span id="registration_fail" class="response_error" style="display: none;">Registration failed, please try again.</span>
 					    		<div class="clearfix"></div>
-					    		<form>
+<%-- 					    		<form>
 									<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -176,19 +175,17 @@
 								    	</div>
 								    	<span class="help-block has-error" data-error='0' id="remail-error"></span>
 								  	</div>
-						  			<button type="button" id="register_btn" class="btn btn-block bt-login" data-loading-text="Registering....">Register</button>
+						  			<button type="submit" id="register_btn" class="btn btn-block bt-login" data-loading-text="Registering....">Register</button>
 									<div class="clearfix"></div>
 									<div class="login-modal-footer">
 						  				<div class="row">
 											<div class="col-xs-8 col-sm-8 col-md-8">
-												<i class="fa fa-lock"></i>
 											</div>
 											<div class="col-xs-4 col-sm-4 col-md-4">
-												<i class="fa fa-check"></i>
 											</div>
 										</div>
 						  			</div>
-								</form>
+								</form> --%>
 					    	</div>
 						  	</div>
 						</div>

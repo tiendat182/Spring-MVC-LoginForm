@@ -8,20 +8,34 @@ $(document).ready(function(){
 	   	e.preventDefault();
 	    $('#signin-taba').tab('show');
 	});
-	    	
-//	$(document).on('click','#regist_btn',function(e){
-//	 	e.preventDefault();
-//	 	var data = $("#form_regist").serialize();
-//	 	alert(data);
-//	 	$.ajax({
-//	 		type: "POST",
-//	 		data: JSON.stringify(data),
-//	 		url: "/Spring-MVC-LoginForm/registUser/regist",
-//	 		async: false,
-//	 		dataType: "json",
-//	 		success: function (){
-//	 			alert("OK");
-//	 		}
-//	 	});
-//	});
 });	
+
+function btn_regist() {
+//	 	var email_id = $("#email").val();
+//	 	var password = $("#password").val();
+//	 	var lastName = $("#lastName").val();
+//	 	var first_name = $("#first_name").val();
+//	 	var jsonData = {"email_id" : email_id, "password" : password,"lastName" : lastName,"first_name" : first_name};
+	 	var data = $("#form_regist").serialize();
+	 	$.ajax({
+	 		data: data,
+	 		type: 'POST',
+	 		url: "/Spring-MVC-LoginForm/registUser/regist/",
+	 		async: false,
+			dataType : 'json',
+			timeout : 100000,
+	 		success: function (response){
+	 			try {
+	 				var strResponse = jQuery.parseJSON(response);
+	 			} catch(err) {}
+	 			if (response.hasError == 'false') {
+	 				$("#password-error").css('display', 'none');
+	 			} else {
+	 				if ($.trim(response.passwordError)) {
+	 					$("#password-error").html(response.passwordError);
+	 					$("#password-error").css('display', 'inline');
+	 				}
+	 			}
+	 		}
+	 });
+}

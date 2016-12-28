@@ -40,3 +40,9 @@
 	margin-top:15px;
 	margin-bottom:15px;
 }
+
+#password-error {
+	color: red; 
+	display:none; 
+	text-align:center !important;
+}
