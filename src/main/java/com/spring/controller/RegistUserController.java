@@ -21,12 +21,39 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.bean.User;
 import com.spring.mapper.UserMapper;
 
+/**
+ * Function register user information
+ * @author DatLT
+ *
+ */
 @Controller
 public class RegistUserController {
 	private List<User> userList = null;
+	
+	/** Length of email*/
+	private static final int LEN_EMAIL_USER = 45; 
+	/** Length of password*/
+	private static final int LEN_PASSWORD_USER = 45; 
+	/** Length of first name*/
+	private static final int LEN_FIRST_NAME_USER = 45; 	
+	/** Error message when password is empty */
+	private static final String PASSWORD_NOT_EMPTY = "Password is NOT empty"; 
+	/** Error message when email is empty */
+	private static final String EMAIL_NOT_EMPTY = "Email is NOT empty"; 
+	/** Error message when first_name is empty */
+	private static final String FIRST_NAME_NOT_EMPTY = "First name is NOT empty"; 
+	/** Error message when email is greater than 45 characters */
+	private static final String EMAIL_TOO_LONG = "Email is too long.Plz enter email is 45 chacracters"; 
+	/** Error message when password is greater than 45 characters */
+	private static final String PASSWORD_TOO_LONG = "Password is too long.Plz enter password is 45 chacracters"; 	
+	/** Error message when first name is greater than 45 characters */
+	private static final String FIRST_NAME_TOO_LONG = "First name is too long.Plz enter first name is 45 chacracters"; 		
+	
 
-	/*
-	 * Get user list
+	/**
+	 * Get user list to display
+	 * @param model
+	 * @return list of screen
 	 */
 	@RequestMapping(value = "/registUser/getUserList")
 	public String getUserList(Model model) {
@@ -48,14 +75,12 @@ public class RegistUserController {
 		return "listUser";
 	}
 
-	/*
+	/**
 	 * Register user
 	 * 
-	 * @params model
-	 * 
-	 * @params userBean
-	 * 
-	 * @return json:true if has error, otherwise is false
+	 * @param model
+	 * @param userBean
+	 * @return json: <b>TRUE</b> if has error, otherwise is <b>FALSE</b>
 	 */
 	@RequestMapping(value = "/registUser/regist", method = RequestMethod.POST)
 	@ResponseBody
@@ -65,6 +90,10 @@ public class RegistUserController {
 			System.out.println("=======> " + userBean.toString());
 			// Validate input
 			if (validateForRegist(jsonResponse, userBean)) {
+				jsonResponse.put("hasError", "true");
+				return jsonResponse.toString();
+			}
+			if (checkExistEmail(jsonResponse, userBean)) {
 				jsonResponse.put("hasError", "true");
 				return jsonResponse.toString();
 			}
@@ -106,19 +135,118 @@ public class RegistUserController {
 	 * =========================================================================
 	 */
 
-	/*
-	 * Validate input items
-	 * 
+	/**
+	 * Validate input items : 
+	 * 	<ul>
+	 * 		<li>validateEmailId</li>
+	 * 		<li>validatePassword</li>
+	 * 		<li>validateFirstName</li>
+	 * 	</ul>
+	 * @param jsonResponse store key for error message
 	 * @param userBean properties input
-	 * 
-	 * @return true if has error, otherwise is false
+	 * @return <b>TRUE</b> if has error, otherwise is <b>FALSE</b>
 	 */
 	private boolean validateForRegist(JSONObject jsonResponse, UserBean userBean) throws JSONException {
 		boolean hasError = false;
-		if (StringUtils.isEmpty(userBean.getPassword())) {
-			jsonResponse.put("passwordError", "Invalid username and password");
+		if (validateEmailId(jsonResponse, userBean)) {
+			hasError = true;
+		}
+		if (validatePassword(jsonResponse, userBean)) {
+			hasError = true;
+		}
+		if (validateFirstName(jsonResponse, userBean)) {
 			hasError = true;
 		}
 		return hasError;
+	}
+	
+	/**
+	 * Validate email item : 
+	 * 	<ul>
+	 * 		<li>Check empty</li>
+	 * 		<li>Check max length</li>
+	 * 	</ul>
+	 * @param jsonResponse store key for error message
+	 * @param userBean properties input
+	 * @return <b>TRUE</b> if has error, otherwise is <b>FALSE</b>
+	 * @throws JSONException 
+	 */
+	private boolean validateEmailId(JSONObject jsonResponse, UserBean userBean) throws JSONException {
+		userBean.setEmail_id(userBean.getEmail_id().trim());
+		// Check empty
+		if (StringUtils.isEmpty(userBean.getEmail_id())) {
+			jsonResponse.put("emailError", EMAIL_NOT_EMPTY);
+			return true;
+		}
+		// Check max length
+		if (userBean.getEmail_id().length() > LEN_EMAIL_USER) {
+			jsonResponse.put("emailError", EMAIL_TOO_LONG);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Validate password item :
+	 * 	<ul>
+	 * 		<li>Check empty</li>
+	 * 		<li>Check max length</li>
+	 * 	</ul>
+	 * @param jsonResponse store key for error message
+	 * @param userBean properties input
+	 * @return <b>TRUE</b> if has error, otherwise is <b>FALSE</b>
+	 * @throws JSONException 
+	 */
+	private boolean validatePassword(JSONObject jsonResponse, UserBean userBean) throws JSONException {
+		userBean.setPassword(userBean.getPassword().trim());
+		// Check empty
+		if (StringUtils.isEmpty(userBean.getPassword())) {
+			jsonResponse.put("passwordError", PASSWORD_NOT_EMPTY);
+			return true;
+		}
+		// Check max length
+		if (userBean.getPassword().length() > LEN_PASSWORD_USER) {
+			jsonResponse.put("passwordError", PASSWORD_TOO_LONG);
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Validate first name item
+	 * 	<ul>
+	 * 		<li>Check empty</li>
+	 * 		<li>Check max length</li>
+	 * 	</ul>
+	 * @param jsonResponse store key for error message
+	 * @param userBean properties input
+	 * @return <b>TRUE</b> if has error, otherwise is <b>FALSE</b>
+	 * @throws JSONException 
+	 */
+	private boolean validateFirstName(JSONObject jsonResponse, UserBean userBean) throws JSONException {
+		userBean.setFirst_name(userBean.getFirst_name().trim());
+		// Check empty
+		if (StringUtils.isEmpty(userBean.getFirst_name())) {
+			jsonResponse.put("firstNameError", FIRST_NAME_NOT_EMPTY);
+			return true;
+		}
+		// Check max length
+		if (userBean.getFirst_name().length() > LEN_FIRST_NAME_USER) {
+			jsonResponse.put("firstNameError", FIRST_NAME_TOO_LONG);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Check existence of email
+	 * @param jsonResponse store key for error message
+	 * @param userBean properties input
+	 * @return <b>TRUE</b> if existed, otherwise is <b>FALSE</b>
+	 * @throws JSONException 
+	 */
+	private boolean checkExistEmail(JSONObject jsonResponse, UserBean userBean) throws JSONException {
+		
+		return false;
 	}
 }

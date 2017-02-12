@@ -123,25 +123,25 @@
 								      		<div class="input-group-addon">Email</i></div>
 								      		<input type="text" class="form-control" id="email" placeholder="Email" name="email_id">
 								    	</div>
-								    	<span class="help-block has-error" id="email-error"></span>
+								    	<span class="help-block has-error" id="email-Id"></span>
 								  	</div>								  	
-								  	
-								  	<div class="form-group">
-								    	<div class="input-group">
-								      		<div class="input-group-addon">Last name</i></div>
-								      		<input type="text" class="form-control" id="lastName" placeholder="Last name" name="last_name">
-								    	</div>
-								    	<span class="help-block has-error" id="lastName-error"></span>
-								  	</div>									  	
 								  	
 								  	<div class="form-group">
 								    	<div class="input-group">
 								      		<div class="input-group-addon">First name</i></div>
 								      		<input type="text" class="form-control" id="firstName" placeholder="First name" name="first_name">
 								    	</div>
-								    	<span class="help-block has-error" id="firstName-error"></span>
-								  	</div>									  	
+								    	<span class="help-block has-error" id="first-Name"></span>
+								  	</div>	
 								  	
+								  	<div class="form-group">
+								    	<div class="input-group">
+								      		<div class="input-group-addon">Last name</i></div>
+								      		<input type="text" class="form-control" id="lastName" placeholder="Last name" name="last_name">
+								    	</div>
+								    	<span class="help-block has-error" id="last-Name"></span>
+								  	</div>									  	
+
 						  			<button type=button id="regist_btn" class="btn btn-block btn-primary" data-loading-text="Signing In...." onclick="btn_regist();">Register</button>
 						  			<div class="clearfix"></div>
 						  			<div class="login-modal-footer">

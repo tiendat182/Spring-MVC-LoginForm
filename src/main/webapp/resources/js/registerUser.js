@@ -29,11 +29,31 @@ function btn_regist() {
 	 				var strResponse = jQuery.parseJSON(response);
 	 			} catch(err) {}
 	 			if (response.hasError == 'false') {
+	 				$("#email-Id").css('display', 'none');
 	 				$("#password-error").css('display', 'none');
+	 				$("#first-Name").css('display', 'none');
 	 			} else {
+	 				// Display error message for password
 	 				if ($.trim(response.passwordError)) {
 	 					$("#password-error").html(response.passwordError);
 	 					$("#password-error").css('display', 'inline');
+	 				} else {
+	 					$("#password-error").html("");
+	 				}
+	 				// Display error message for email
+	 				if ($.trim(response.emailError)) {
+	 					$("#email-Id").html(response.emailError);
+	 					$("#email-Id").css('display', 'inline');	
+	 				} else {
+	 					$("#email-Id").html("");
+	 				}
+	 				
+	 				// Display error message for email
+	 				if ($.trim(response.firstNameError)) {
+	 					$("#first-Name").html(response.firstNameError);
+	 					$("#first-Name").css('display', 'inline');	
+	 				} else {
+	 					$("#first-Name").html("");
 	 				}
 	 			}
 	 		}

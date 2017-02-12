@@ -41,7 +41,7 @@
 	margin-bottom:15px;
 }
 
-#password-error {
+#password-error, #email-Id, #first-Name {
 	color: red; 
 	display:none; 
 	text-align:center !important;
