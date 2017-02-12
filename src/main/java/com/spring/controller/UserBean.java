@@ -6,6 +6,7 @@ public class UserBean {
 	private String password;
 	private String first_name;
 	private String last_name;
+	private String status;
 
 	public int getUser_id() {
 		return user_id;
@@ -47,13 +48,22 @@ public class UserBean {
 		this.last_name = last_name;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("user_id=").append(user_id).append(" - ");
 		sb.append("email_id=").append(email_id).append(" - ");
 		sb.append("password=").append(password).append(" - ");
 		sb.append("first_name=").append(first_name).append(" - ");
-		sb.append("last_name=").append(last_name);
+		sb.append("last_name=").append(last_name).append(" - ");
+		sb.append("status=").append(status);
 		return sb.toString();
 	}
 }

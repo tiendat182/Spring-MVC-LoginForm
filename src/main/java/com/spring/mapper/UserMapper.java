@@ -17,8 +17,8 @@ public interface UserMapper {
 	@Select(SQL_GET_USER_LIST)
 	@Results(value = { @Result(property = "user_id", column = "user_id"),
 			@Result(property = "email_id", column = "email_id"), @Result(property = "password", column = "password"),
-			@Result(property = "first_name", column = "first_name"),
-			@Result(property = "last_name", column = "last_name") })
+			@Result(property = "first_name", column = "first_name"), @Result(property = "last_name", column = "last_name"),
+			@Result(property = "status", column = "status") })
 	List<User> getUserList();
 
 	@Insert(SQL_INSERT_USER)

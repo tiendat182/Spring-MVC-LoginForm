@@ -12,13 +12,13 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/jquery.dataTables.min.css" />" type="text/css" /> 
 <script type="text/javascript" src="<c:url value="/resources/js/registerUser.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.min.js" />" ></script>
+<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css"> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
 <%-- <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" type="text/css" /> --%>
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.min.css" />" type="text/css" />
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value="/resources/css/registerUser.css" />" type="text/css" /> 
-<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
 
 </head>
 <body style="margin: auto;width: 80%;">
@@ -62,6 +62,7 @@
 							<th>Password</th>
 							<th>First Name</th>
 							<th>Last Name</th>
+							<th>Status</th>
 						</tr>
 				</thead>
 				<tbody>
@@ -72,6 +73,19 @@
 							<td>${user.password}</td>
 							<td>${user.first_name}</td>
 							<td>${user.last_name}</td>
+							<c:choose>
+								<c:when test="${empty user.status}">
+									<td>Disallow</td>
+								</c:when>
+								<c:otherwise>
+									<c:if test="${user.status == '0' }">
+										<td>Disallow</td>
+									</c:if>
+									<c:if test="${user.status == '1' }">
+										<td>Allow</td>
+									</c:if>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -160,32 +174,6 @@
 					    	    &nbsp;&nbsp;
 					    	    <span id="registration_fail" class="response_error" style="display: none;">Registration failed, please try again.</span>
 					    		<div class="clearfix"></div>
-<%-- 					    		<form>
-									<div class="form-group">
-								    	<div class="input-group">
-								      		<div class="input-group-addon"><i class="fa fa-user"></i></div>
-								      		<input type="text" class="form-control" id="username" placeholder="Username">
-								    	</div>
-								    	<span class="help-block has-error" data-error='0' id="username-error"></span>
-								  	</div>
-								  	<div class="form-group">
-								    	<div class="input-group">
-								      		<div class="input-group-addon"><i class="fa fa-at"></i></div>
-								      		<input type="text" class="form-control" id="remail" placeholder="Email">
-								    	</div>
-								    	<span class="help-block has-error" data-error='0' id="remail-error"></span>
-								  	</div>
-						  			<button type="submit" id="register_btn" class="btn btn-block bt-login" data-loading-text="Registering....">Register</button>
-									<div class="clearfix"></div>
-									<div class="login-modal-footer">
-						  				<div class="row">
-											<div class="col-xs-8 col-sm-8 col-md-8">
-											</div>
-											<div class="col-xs-4 col-sm-4 col-md-4">
-											</div>
-										</div>
-						  			</div>
-								</form> --%>
 					    	</div>
 						  	</div>
 						</div>
