@@ -53,7 +53,7 @@
 
 	<div style="border: 1px solid rgb(169, 169, 169); padding: 50px;" id="wrapper">
 		<form:form modelAttribute="userBean" >
-			<h2>User Information</h2>
+			<h2>Information User</h2>
 			<table id="myTable" class="display">
 				<thead>
 						<tr>
@@ -68,21 +68,21 @@
 				<tbody>
 					<c:forEach items="${userList}" var="user" varStatus="status">
 						<tr>
-							<td>${status.count}</td>
-							<td>${user.email_id}</td>
-							<td>${user.password}</td>
-							<td>${user.first_name}</td>
-							<td>${user.last_name}</td>
+							<td id="count">${status.count}</td>
+							<td id="email_id">${user.email_id}</td>
+							<td id="password">${user.password}</td>
+							<td id="first_name">${user.first_name}</td>
+							<td id="last_name">${user.last_name}</td>
 							<c:choose>
 								<c:when test="${empty user.status}">
-									<td>Disallow</td>
+									<td id="status">Disallow</td>
 								</c:when>
 								<c:otherwise>
 									<c:if test="${user.status == '0' }">
-										<td>Disallow</td>
+										<td id="status">Disallow</td>
 									</c:if>
 									<c:if test="${user.status == '1' }">
-										<td>Allow</td>
+										<td id="status">Allow</td>
 									</c:if>
 								</c:otherwise>
 							</c:choose>
@@ -92,6 +92,31 @@
 			</table>	
 			<br/>
 		</form:form>
+<!-- Pop-up when double click to row of table  -->
+<div class="modal fade" id="detail-user">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #ccebff;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Detail user</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+        	<tr><td>No. :</td><td><label id="detail-count"></label></td></tr>
+        	<tr><td>Email :</td><td><label id="detail-email_id"></label></td></tr>
+        	<tr><td>Password :</td><td><label id="detail-password"></label></td></tr>
+        	<tr><td>First name :</td><td><label id="detail-first_name"></label></td></tr>
+        	<tr><td>Last name :</td><td><label id="detail-last_name"></label></td></tr>
+        	<tr><td>Status :</td><td><label id="detail-status"></label></td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <!-- Popup -->
 	<div style="float: right;">
