@@ -54,9 +54,9 @@
 	<div style="border: 1px solid rgb(169, 169, 169); padding: 50px;" id="wrapper">
 		<form:form modelAttribute="userBean" >
 			<h2>Information User</h2>
-			<table id="myTable" class="display">
+			<table id="myTable" class="display" style="border:1px solid #d8f0e0;">
 				<thead>
-						<tr>
+						<tr style="background-color: #22b1c4;">
 							<th>No.</th>
 							<th>Email</th>
 							<th>Password</th>
@@ -96,21 +96,38 @@
 <div class="modal fade" id="detail-user">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #ccebff;">
+      <div class="modal-header" style="background-color: #daf1f6 !important;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Detail user</h4>
       </div>
       <div class="modal-body">
-        <table>
-        	<tr><td>No. :</td><td><label id="detail-count"></label></td></tr>
-        	<tr><td>Email :</td><td><label id="detail-email_id"></label></td></tr>
-        	<tr><td>Password :</td><td><label id="detail-password"></label></td></tr>
-        	<tr><td>First name :</td><td><label id="detail-first_name"></label></td></tr>
-        	<tr><td>Last name :</td><td><label id="detail-last_name"></label></td></tr>
-        	<tr><td>Status :</td><td><label id="detail-status"></label></td></tr>
+        <table style="width: 100% ;border: 1px solid #e5e5e5; border-collapse: collapse;">
+        	<tr>
+        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>No.</span></td>
+        		<td style="border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-count"></span></td>
+        	</tr>
+        	<tr>
+        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Email</span></td>
+        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-email_id"></span></td>
+        	</tr>
+        	<tr><td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Password</span></td>
+        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-password"></span></td>
+        	</tr>
+        	<tr>
+        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>First name</span></td>
+        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-first_name"></span></td>
+        	</tr>
+        	<tr>
+        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Last name</span></td>
+        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-last_name"></span></td>
+        	</tr>
+        	<tr>
+        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Status</span></td>
+        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-status"></span></td>
+        	</tr>
         </table>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="background-color: #f5f5f5 !important;">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
