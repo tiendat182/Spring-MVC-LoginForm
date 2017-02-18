@@ -10,6 +10,9 @@ $(document).ready(function(){
 	});
 });	
 
+/**
+ * Event to click to Register button
+ */
 function btn_regist() {
 //	 	var email_id = $("#email").val();
 //	 	var password = $("#password").val();
