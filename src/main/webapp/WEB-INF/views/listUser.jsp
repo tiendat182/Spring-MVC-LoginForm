@@ -27,7 +27,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>                        
 	      </button>
-	      <a class="navbar-brand" href="#">XMS Project</a>
+	      <a class="navbar-brand" href="#">Spring Project</a>
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
@@ -97,29 +97,29 @@
         <h4 class="modal-title">Detail user</h4>
       </div>
       <div class="modal-body">
-        <table style="width: 100% ;border: 1px solid #e5e5e5; border-collapse: collapse;">
+        <table>
         	<tr>
-        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>No.</span></td>
-        		<td style="border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-count"></span></td>
+        		<td class="detail-user-label"><span>No.</span></td>
+        		<td class="detail-user-info"><span id="detail-count"></span></td>
         	</tr>
         	<tr>
-        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Email</span></td>
-        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-email_id"></span></td>
+        		<td class="detail-user-label"><span>Email</span></td>
+        		<td class="detail-user-info"><span id="detail-email_id"></span></td>
         	</tr>
-        	<tr><td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Password</span></td>
-        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-password"></span></td>
-        	</tr>
-        	<tr>
-        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>First name</span></td>
-        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-first_name"></span></td>
+        	<tr><td class="detail-user-label"><span>Password</span></td>
+        		<td class="detail-user-info"><span id="detail-password"></span></td>
         	</tr>
         	<tr>
-        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Last name</span></td>
-        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-last_name"></span></td>
+        		<td class="detail-user-label"><span>First name</span></td>
+        		<td class="detail-user-info"><span id="detail-first_name"></span></td>
         	</tr>
         	<tr>
-        		<td style="width: 20%; border: 1px solid #e5e5e5; background-color: #22b1c4; color: white; font-weight: bold; padding-left: 2px;"><span>Status</span></td>
-        		<td style=" border: 1px solid #e5e5e5; padding-left: 2px;"><span id="detail-status"></span></td>
+        		<td class="detail-user-label"><span>Last name</span></td>
+        		<td class="detail-user-info"><span id="detail-last_name"></span></td>
+        	</tr>
+        	<tr>
+        		<td class="detail-user-label"><span>Status</span></td>
+        		<td class="detail-user-info"><span id="detail-status"></span></td>
         	</tr>
         </table>
       </div>
