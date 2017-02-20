@@ -66,7 +66,7 @@
                   Filter:
 		            <select id="filter-date" name="" class="selectpicker" data-style="btn-primary" data-live-search="true">
 		                <option value="">Past date</option>
-		                <option value="">Curent date</option>
+		                <option value="">Current date</option>
 		                <option value="">Future date</option>
 					</select>
                   </div>
