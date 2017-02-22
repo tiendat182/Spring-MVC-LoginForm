@@ -54,31 +54,37 @@ function padRight(inStr, len, padChar) {
  * @return String after padding
  */
 function _padLeft(inStr, len, padChar, padLeft) {
-	inStr = isEmpty(inStr) ? "": inStr;
+	var outStr = inStr + "";
+	outStr = isEmpty(outStr) ? "": outStr;
 
-	var outStr = inStr;
-	if (isEmpty(len)) {
-		return outStr;
-	}
+	// Check character padding
 	if (isEmpty(padChar) || padChar.length > 1) {
 		return outStr;
 	}
-	if (inStr.length < len) {
-		for(var i = inStr.length; i < len; i++) {
-			if (padLeft) {
-				outStr = padChar + outStr;
-			} else
-				outStr = outStr + padChar;
-		}
+
+	if (outStr.length >= len) {
+		return outStr;
+	}
+
+	// Generate character to be added
+	var pad ="";
+	for(var i = outStr.length; i < len; i++) {
+		pad += padChar;
+	}
+	// Append character string to output string
+	if (padLeft) {
+		outStr = pad + outStr;
+	} else {
+		outStr = outStr + pad;
 	}
 	return outStr;
 }
 
 /**
- * Format date to YYYYMMDD.
+ * Format date to yyyyMMddHHmmssSSS.
  * @param	date
  * @param	format
- * @return	{YYYYMMDD} format if date is not empty, otherwise is {null}
+ * @return	{yyyyMMddHHmmssSSS} format if date is not empty, otherwise is {null}
  */
 function formatDate(date, format) {
 	if (isEmpty(date)) {
@@ -91,12 +97,60 @@ function formatDate(date, format) {
 		result = result.replace(/yyyy/, date.getFullYear());
 	}
 	// Month
-	if (result.indexOf("mm") > -1){
-		result = result.replace(/mm/, date.getMonth());
+	if (result.indexOf("MM") > -1) {
+		result = result.replace(/MM/, padLeft(date.getMonth(), 2, "0", true));
 	}
 	// Day
-	if (result.indexOf("dd") > -1){
-		result = result.replace(/dd/, date.getDate());
+	if (result.indexOf("dd") > -1) {
+		result = result.replace(/dd/, padLeft(date.getDate(), 2, "0", true));
 	}
+	// Hour
+	if (result.indexOf("HH") > -1) {
+		result = result.replace(/HH/, padLeft(date.getHours(), 2, "0", true));
+	}
+	// Minute
+	if (result.indexOf("mm") > -1) {
+		result = result.replace(/mm/, padLeft(date.getHours(), 2, "0", true));
+	}
+	// Seconds
+	if (result.indexOf("ss") > -1) {
+		result = result.replace(/ss/, padLeft(date.getHours(), 2, "0", true));
+	}
+	// Milliseconds
+	if (result.indexOf("SSS") > -1) {
+		result = result.replace(/SSS/, padLeft(date.getHours(), 3, "0", true));
+	}
+	return result;
 }
+
+/**
+ * Get system date
+ * @param format
+ * @return date with format yyyyMMdd if parameter Format is Null, otherwise is yyyyMMddHHmmssSSS
+ */
+function getSystemDate(format) {
+	if (isEmpty(format)) {
+		format = "yyyyMMdd";
+	}
+	var nowDate = new Date();
+	
+	return formatDate(nowDate, format);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
