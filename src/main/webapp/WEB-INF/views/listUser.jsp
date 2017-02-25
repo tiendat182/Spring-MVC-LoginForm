@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login success</title>
+<title>List user</title>
 <%@ include file="/WEB-INF/views/common.jsp" %>
 <script type="text/javascript" src="<c:url value="/resources/js/userList.js" />" ></script>
 <link rel="stylesheet" href="<c:url value="/resources/css/jquery.dataTables.min.css" />" type="text/css" /> 
