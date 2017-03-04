@@ -9,9 +9,7 @@
 <script type="text/javascript" src="<c:url value="/resources/js/registerUser.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.min.js" />" ></script>
 <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js" />" ></script>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css"> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
-<%-- <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />" type="text/css" /> --%>
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.min.css" />" type="text/css" />
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value="/resources/css/registerUser.css" />" type="text/css" /> 

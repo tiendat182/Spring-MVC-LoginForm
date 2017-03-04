@@ -1,13 +1,9 @@
 package com.spring.controller;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -19,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.bean.User;
+import com.spring.common.Connection;
 import com.spring.mapper.UserMapper;
 
 /**
@@ -29,7 +26,11 @@ import com.spring.mapper.UserMapper;
 @Controller
 public class RegistUserController {
 	private List<User> userList = null;
-	
+	/*
+	 * ========================================================================
+	 * Constants
+	 * ========================================================================
+	 */
 	/** Length of email*/
 	private static final int LEN_EMAIL_USER = 45; 
 	/** Length of password*/
@@ -48,24 +49,25 @@ public class RegistUserController {
 	private static final String PASSWORD_TOO_LONG = "Password is too long.Plz enter password is 45 chacracters"; 	
 	/** Error message when first name is greater than 45 characters */
 	private static final String FIRST_NAME_TOO_LONG = "First name is too long.Plz enter first name is 45 chacracters"; 		
-	
+	/** Resource path */
+	private static final String RESOURCE_PATH = "com/spring/config/mybatis-config.xml";
+
+	/*
+	 * ========================================================================
+	 * RequestMapping
+	 * ========================================================================
+	 */
 
 	/**
 	 * Get user list to display
+	 * 
 	 * @param model
 	 * @return list of screen
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/registUser/getUserList")
-	public String getUserList(Model model) {
-		Reader reader = null;
-		try {
-			reader = Resources.getResourceAsReader("com/spring/config/mybatis-config.xml");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+	public String getUserList(Model model) throws IOException {
+		SqlSession sqlSession = Connection.sqlSession(RESOURCE_PATH);
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
 
 		userList = userMapper.getUserList();
@@ -101,8 +103,7 @@ public class RegistUserController {
 			ex.printStackTrace();
 		}
 
-		// // Register user
-		Reader reader = null;
+		// Register user
 		try {
 			// reader =
 			// Resources.getResourceAsReader("com/spring/config/mybatis-config.xml");
@@ -246,7 +247,7 @@ public class RegistUserController {
 	 * @throws JSONException 
 	 */
 	private boolean checkExistEmail(JSONObject jsonResponse, UserBean userBean) throws JSONException {
-		
+
 		return false;
 	}
 }

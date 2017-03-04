@@ -118,7 +118,7 @@ function formatDate(date, format) {
 	}
 	// Milliseconds
 	if (result.indexOf("SSS") > -1) {
-		result = result.replace(/SSS/, padLeft(date.getHours(), 3, "0", true));
+		result = result.replace(/SSS/, padRight(date.getHours(), 3, "0", true));
 	}
 	return result;
 }
