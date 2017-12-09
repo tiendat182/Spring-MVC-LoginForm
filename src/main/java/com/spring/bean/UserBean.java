@@ -1,4 +1,4 @@
-package com.spring.controller;
+package com.spring.bean;
 
 public class UserBean {
 	private int user_id;

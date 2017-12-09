@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.bean.User;
+import com.spring.bean.UserBean;
 import com.spring.common.Connection;
 import com.spring.mapper.UserMapper;
 

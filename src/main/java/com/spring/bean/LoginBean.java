@@ -1,4 +1,4 @@
-package com.spring.controller;
+package com.spring.bean;
 
 public class LoginBean {
 	private String userName;

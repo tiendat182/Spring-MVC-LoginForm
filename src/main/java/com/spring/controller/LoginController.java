@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.bean.Account;
+import com.spring.bean.LoginBean;
 import com.spring.common.Connection;
 import com.spring.mapper.AccountMapper;
 
