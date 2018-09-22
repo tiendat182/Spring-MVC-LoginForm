@@ -40,7 +40,7 @@ public class LoginController {
 	 * RequestMapping
 	 * ========================================================================
 	 */
-
+//dat
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String init(Model model) {
 		model.addAttribute(ATTRIBUTE_NAME_MSG, ATTRIBUTE_VAL_MSG_LOGIN_DETAIL);
